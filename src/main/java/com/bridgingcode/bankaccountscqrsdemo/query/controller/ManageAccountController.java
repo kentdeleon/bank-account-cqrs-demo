@@ -1,37 +1,35 @@
 package com.bridgingcode.bankaccountscqrsdemo.query.controller;
 
-import com.bridgingcode.bankaccountscqrsdemo.query.entity.Account;
-import com.bridgingcode.bankaccountscqrsdemo.query.query.FindAccountByIdQuery;
-import org.axonframework.queryhandling.QueryGateway;
-import org.springframework.http.HttpStatus;
+import com.bridgingcode.bankaccountscqrsdemo.query.dto.api.AccountListResponse;
+import com.bridgingcode.bankaccountscqrsdemo.query.dto.api.AccountResponse;
+import com.bridgingcode.bankaccountscqrsdemo.query.service.AccountQueryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/manage-account")
+@Slf4j
 public class ManageAccountController implements ManageAccountInterface{
 
-    private final QueryGateway queryGateway;
+    private final AccountQueryService queryService;
 
-    public ManageAccountController(QueryGateway queryGateway) {
-        this.queryGateway = queryGateway;
+    public ManageAccountController(AccountQueryService queryService) {
+        this.queryService = queryService;
     }
 
     @Override
     @GetMapping("/get-account")
-    public ResponseEntity<Account> getAccount(@RequestParam String id) {
+    public ResponseEntity<AccountListResponse> getAllAccount() {
+        return queryService.getAllAccount();
+    }
 
-        Account account = queryGateway.query(new FindAccountByIdQuery(id), Account.class).join();
-
-        if(Objects.isNull(account)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        return new ResponseEntity<>(account, HttpStatus.OK);
+    @Override
+    @GetMapping("/get-account/{id}")
+    public ResponseEntity<AccountResponse> getAccount(@PathVariable String id) {
+        return queryService.getAccount(id);
     }
 }

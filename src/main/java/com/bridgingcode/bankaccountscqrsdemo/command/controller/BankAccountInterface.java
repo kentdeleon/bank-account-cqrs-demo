@@ -1,6 +1,6 @@
 package com.bridgingcode.bankaccountscqrsdemo.command.controller;
 
-import com.bridgingcode.bankaccountscqrsdemo.command.dto.*;
+import com.bridgingcode.bankaccountscqrsdemo.command.dto.api.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

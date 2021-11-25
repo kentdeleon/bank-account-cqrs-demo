@@ -16,9 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<springfox.version>2.9.2</springfox.version>
-		<jacoco.version>0.8.0</jacoco.version>
-		<jacoco.target.file.ut>target/jacoco-ut.exec</jacoco.target.file.ut>
-		<jacoco.target.file.it>target/jacoco-it.exec</jacoco.target.file.it>
+		<spring-cloud.version>2020.0.4</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -65,13 +63,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<dependency>
-			<groupId>org.mock-server</groupId>
-			<artifactId>mockserver-netty</artifactId>
-			<version>5.5.1</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
@@ -84,7 +75,14 @@
 			<version>${springfox.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-sleuth-zipkin</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -103,5 +101,26 @@
 			</plugin>
 		</plugins>
 	</build>
+<!--	<dependencyManagement>-->
+<!--		<dependencies>-->
+<!--			<dependency>-->
+<!--				<groupId>org.springframework.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-dependencies</artifactId>-->
+<!--				<version>${spring-cloud.version}</version>-->
+<!--				<type>pom</type>-->
+<!--				<scope>import</scope>-->
+<!--			</dependency>-->
+<!--		</dependencies>-->
+<!--	</dependencyManagement>-->
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>spring-milestones</id>-->
+<!--			<name>Spring Milestones</name>-->
+<!--			<url>https://repo.spring.io/milestone</url>-->
+<!--			<snapshots>-->
+<!--				<enabled>false</enabled>-->
+<!--			</snapshots>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 
 </project>
